@@ -11,11 +11,13 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name="LOCATION")
 public class Location {
+	
 	@Id
 	@GeneratedValue
 	private int id;
 	private String enlem;
 	private String boylam;
+	private int speed;
 	public int getId() {
 		return id;
 	}
@@ -34,7 +36,11 @@ public class Location {
 	public void setBoylam(String boylam) {
 		this.boylam = boylam;
 	}
+	public int getSpeed() {
+		return speed;
+	}
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
 	
-	
-
 }

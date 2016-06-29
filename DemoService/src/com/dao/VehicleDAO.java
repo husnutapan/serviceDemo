@@ -1,5 +1,7 @@
 package com.dao;
 
-public interface VehicleDAO {
+import com.model.Vehicle;
 
+public interface VehicleDAO {
+	public void saveVehicle(Vehicle vehicle);
 }

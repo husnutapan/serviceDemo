@@ -7,8 +7,5 @@ import com.service.LocationService;
 
 @RestController
 public class LocationController {
-	
-	@Autowired
-	private LocationService locationService;
 
 }

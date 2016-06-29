@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -15,21 +16,22 @@ import org.springframework.stereotype.Component;
 @Table(name = "PARENT")
 public class Parent {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	private String name;
+	private String username;
+	private String password;
 	private String surname;
 	private String telNumber;
 	private String email;
 
-	@OneToMany
+	@OneToMany(mappedBy="parent")
 	private List<Student> students;
 
 	public Parent() {
+		
 	}
 
-	
-	
 	public Parent(String name, String surname, String telNumber, String email, List<Student> students) {
 		super();
 		this.name = name;
@@ -38,8 +40,6 @@ public class Parent {
 		this.email = email;
 		this.students = students;
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -88,5 +88,19 @@ public class Parent {
 	public void setStudents(List<Student> students) {
 		this.students = students;
 	}
+
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 
 }

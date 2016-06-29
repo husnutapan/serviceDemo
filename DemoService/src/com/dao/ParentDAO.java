@@ -1,5 +1,7 @@
 package com.dao;
 
-public interface ParentDAO {
+import com.model.Parent;
 
+public interface ParentDAO {
+	public void saveParent(Parent parent);
 }

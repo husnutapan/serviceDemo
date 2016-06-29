@@ -4,7 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -14,24 +16,28 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name = "STUDENT")
 public class Student {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name;
 	private String surname;
-	
+
+	private int proximity;
+
 	@ManyToOne
+	@JoinColumn(name="parent_Id")
 	private Parent parent;
-	
-	@OneToOne
-	private Vehicle service;
-	
-	@OneToOne
+
+	@ManyToOne
+	@JoinColumn(name="VEHICLE_ID")
+	private Vehicle vehicle;
+
+	@ManyToOne
+	@JoinColumn(name="LOCATION_ID")
 	private Location location;
 
 	public Student() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getId() {
@@ -41,8 +47,6 @@ public class Student {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-
 
 	public String getName() {
 		return name;
@@ -76,12 +80,19 @@ public class Student {
 		this.parent = parent;
 	}
 
-	public Vehicle getService() {
-		return service;
+	public Vehicle getVehicle() {
+		return vehicle;
 	}
 
-	public void setService(Vehicle service) {
-		this.service = service;
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
 	}
-	
+
+	public int getProximity() {
+		return proximity;
+	}
+
+	public void setProximity(int proximity) {
+		this.proximity = proximity;
+	}
 }
