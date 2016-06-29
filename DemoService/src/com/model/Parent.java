@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -16,20 +17,20 @@ import org.springframework.stereotype.Component;
 @Table(name = "PARENT")
 public class Parent {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name;
-	private String username;
-	private String password;
 	private String surname;
 	private String telNumber;
-	private String email;
 
-	@OneToMany(mappedBy="parent")
+	@OneToMany(mappedBy = "parent")
 	private List<Student> students;
+	
+	@OneToOne
+	private Tuser tuser;
 
 	public Parent() {
-		
+
 	}
 
 	public Parent(String name, String surname, String telNumber, String email, List<Student> students) {
@@ -37,7 +38,6 @@ public class Parent {
 		this.name = name;
 		this.surname = surname;
 		this.telNumber = telNumber;
-		this.email = email;
 		this.students = students;
 	}
 
@@ -55,14 +55,6 @@ public class Parent {
 
 	public void setTelNumber(String telNumber) {
 		this.telNumber = telNumber;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getName() {
@@ -89,18 +81,13 @@ public class Parent {
 		this.students = students;
 	}
 
-	public String getUsername() {
-		return username;
+	public Tuser getTuser() {
+		return tuser;
 	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
+
+	public void setTuser(Tuser tuser) {
+		this.tuser = tuser;
 	}
 	
-
+	
 }

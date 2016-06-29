@@ -26,7 +26,7 @@ public class Vehicle {
 
 	private String vehicleCompany;
 
-	@OneToMany(mappedBy="vehicle")
+	@OneToMany(mappedBy = "vehicle")
 	private List<Student> students;
 
 	@ManyToOne
