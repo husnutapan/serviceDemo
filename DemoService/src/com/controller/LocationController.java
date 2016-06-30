@@ -20,10 +20,12 @@ public class LocationController {
 	@Autowired
 	private LocationService locationService;
 
-	@RequestMapping(value = "/location/{Id}", method = RequestMethod.POST, consumes = { "application/xml",
+	
+	@RequestMapping(value = "/location/{vehicleId}", method = RequestMethod.POST, consumes = { "application/xml",
 			"application/json" })
-	public @ResponseBody ResponseEntity<HashMap<String, Integer>> loginUser(@PathVariable int locationId) {
+	public @ResponseBody ResponseEntity<ArrayList<Location>> loginUser(@PathVariable int vehicleId) {
 		ArrayList<Location> vehicleLocation = new ArrayList<>();
-		return new ResponseEntity<HashMap<String, Integer>>(HttpStatus.OK);
+		vehicleLocation = locationService.getLocationsWithVehicleId(vehicleId);
+		return new ResponseEntity<ArrayList<Location>>(vehicleLocation,HttpStatus.OK);
 	}
 }
