@@ -1,5 +1,8 @@
 package com.dao;
 
-public interface StudentDAO {
+import com.model.Student;
+import com.model.Tuser;
 
+public interface StudentDAO {
+	public Student getUIDWithTuser(Tuser tuser);
 }

@@ -7,9 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.JoinColumn;
 
 import org.springframework.stereotype.Component;
 
@@ -29,8 +31,9 @@ public class Vehicle {
 	@OneToMany(mappedBy = "vehicle")
 	private List<Student> students;
 
-	@ManyToOne
-	private Location location;
+	@ManyToMany
+	@JoinTable(name = "VEHICLE_LOCATION", joinColumns = @JoinColumn(name = "VEHICLE_ID"), inverseJoinColumns = @JoinColumn(name = "LOCATION_ID"))
+	private List<Location> location;
 
 	public Vehicle() {
 
@@ -40,7 +43,6 @@ public class Vehicle {
 		this.licensePlate = licensePlate;
 		this.timeStamp = timeStamp;
 		this.students = students;
-		this.location = location;
 	}
 
 	public int getId() {
@@ -75,19 +77,19 @@ public class Vehicle {
 		this.students = students;
 	}
 
-	public Location getLocation() {
-		return location;
-	}
-
-	public void setLocation(Location location) {
-		this.location = location;
-	}
-
 	public String getVehicleCompany() {
 		return vehicleCompany;
 	}
 
 	public void setVehicleCompany(String vehicleCompany) {
 		this.vehicleCompany = vehicleCompany;
+	}
+
+	public List<Location> getLocation() {
+		return location;
+	}
+
+	public void setLocation(List<Location> location) {
+		this.location = location;
 	}
 }

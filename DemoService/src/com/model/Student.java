@@ -26,16 +26,12 @@ public class Student {
 	private int proximity;
 
 	@ManyToOne
-	@JoinColumn(name="parent_Id")
+	@JoinColumn(name = "parent_Id")
 	private Parent parent;
 
 	@ManyToOne
-	@JoinColumn(name="VEHICLE_ID")
+	@JoinColumn(name = "VEHICLE_ID")
 	private Vehicle vehicle;
-
-	@ManyToOne
-	@JoinColumn(name="LOCATION_ID")
-	private Location location;
 
 	public Student() {
 	}
@@ -62,14 +58,6 @@ public class Student {
 
 	public void setSurname(String surname) {
 		this.surname = surname;
-	}
-
-	public Location getLocation() {
-		return location;
-	}
-
-	public void setLocation(Location location) {
-		this.location = location;
 	}
 
 	public Parent getParent() {
