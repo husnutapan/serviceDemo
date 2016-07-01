@@ -39,6 +39,7 @@ public class Vehicle {
 
 	}
 
+	
 	public Vehicle(String licensePlate, Date timeStamp, List<Student> students, Location location) {
 		this.licensePlate = licensePlate;
 		this.timeStamp = timeStamp;

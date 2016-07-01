@@ -10,8 +10,7 @@ import javax.websocket.server.*;
 public class ServerEndpointClass {
 	private static Queue<Session> queue = new ConcurrentLinkedQueue<Session>();
 	private static Thread rateThread;
-	
-	
+
 	static {
 		rateThread = new Thread() {
 			public void run() {
@@ -29,6 +28,7 @@ public class ServerEndpointClass {
 		};
 		rateThread.start();
 	}
+
 	@OnMessage
 	public void onMessage(Session session, String msg) {
 		try {
