@@ -13,14 +13,28 @@ public class ParentServiceImpl implements ParentService {
 	@Autowired
 	private ParentDAO parentDAO;
 
-	@Override
-	public void saveParent(Parent parent) {
-		parentDAO.saveParent(parent);
-	}
+
 
 	@Override
 	public boolean loginUser(Tuser tuser) {
 		return parentDAO.loginUser(tuser);
+	}
+
+	@Override
+	public void createParent(Parent parent) {
+			parentDAO.createParent(parent);
+		
+	}
+
+	@Override
+	public void deleteParent(int parentId) {
+		parentDAO.deleteParent(parentId);
+		
+	}
+
+	@Override
+	public void updateParent(Parent parent) {
+		parentDAO.updateParent(parent);
 	}
 
 }

@@ -2,6 +2,7 @@ package com.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,10 +24,10 @@ public class Parent {
 	private String surname;
 	private String telNumber;
 
-	@OneToMany(mappedBy = "parent")
+	@OneToMany(mappedBy = "parent", cascade = CascadeType.ALL)
 	private List<Student> students;
-	
-	@OneToOne
+
+	@OneToOne(cascade = CascadeType.ALL)
 	private Tuser tuser;
 
 	public Parent() {
@@ -88,6 +89,5 @@ public class Parent {
 	public void setTuser(Tuser tuser) {
 		this.tuser = tuser;
 	}
-	
-	
+
 }

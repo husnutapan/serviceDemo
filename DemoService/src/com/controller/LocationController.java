@@ -22,11 +22,8 @@ public class LocationController {
 
 	@RequestMapping(value = "/location/{vehicleParam}", method = RequestMethod.POST, consumes = { "application/json" })
 	public @ResponseBody ResponseEntity<List<Location>> getLocationListWithWehicleId( @PathVariable("vehicleParam") int vehicleParam) {
-		
 		List<Location> vehicleLocation = new ArrayList<>();
 		vehicleLocation = locationService.getLocationsWithVehicleId(vehicleParam);
-		
-
 		return new ResponseEntity<List<Location>>(vehicleLocation, HttpStatus.OK);
 	}
 }
